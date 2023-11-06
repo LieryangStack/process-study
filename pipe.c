@@ -46,10 +46,6 @@ main(int argc, char *argv[]) {
    * 在父进程返回子进程的PID,在子进程返回 0
   */
   if(fork() == 0) { /* 子进程 */
-    pid_t pid = getpid();  // 获取当前进程的PID
-    printf("The Child Process ID is %d\n", pid);
-
-    printf ("child pipefd = %p\n", pipefd);
 
     /* 我们让父进程读取，子进程写入    */
     close(pipefd[0]);    
@@ -67,8 +63,7 @@ main(int argc, char *argv[]) {
   
   /* 父进程 */
   pid_t pid = getpid();  // 获取当前进程的PID
-  printf("The Parent Process ID is %d\n", pid);
-  printf ("parent pipefd = %p\n", pipefd);
+
   close(pipefd[1]);
   while(1)
   {
