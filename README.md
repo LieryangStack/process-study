@@ -15,7 +15,6 @@
 这些机制都通过IPC键（key）来识别，这个键与内部标识符（ID）相关联。
 
 
-
 ### 1.2 POSIX IPC
 
 #### 消息队列 (Message Queues)

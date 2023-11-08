@@ -3,7 +3,7 @@
  * @author: EryangLi
  * @version: 1.0
  * @date: Nov-8-2023
- * @brief:  对应 01_fork详解.md
+ * @brief:  对应 02_管道.md
  *          1. 
  *          2. 
  * @note: 
