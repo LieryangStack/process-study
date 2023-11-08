@@ -4,8 +4,8 @@
  * @version: 1.0
  * @date: Nov-8-2023
  * @brief:  对应 01_fork详解.md
- *          1. 学习fork函数特性
- *          2. getppid（）和 getpid（）函数作用
+ *          1. 
+ *          2. 
  * @note: 
  * @history: 
  *          1. Date:
