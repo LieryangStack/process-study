@@ -28,12 +28,14 @@
 #define FTOK_PATH "./"
 #define FTOK_PROJID 0x22
 
+/* 信号量操作的联合结构 */
 union semun {
-  int val;
-  struct semid_ds *buf;
-  unsigned int *arry;
+  int val; /*  */
+  struct semid_ds *buf; /*  */
+  unsigned int *arry; /*  */
 };
 
+/* 全局变量 */
 union semun sem_union;
 
 int semid;
@@ -44,10 +46,9 @@ int semid;
 int 
 semaphore_init (void) {
   key_t key;
-  int semid;
+  int semid; /* 信号量的ID */
   union semun sem_union;
-  /* 将信号量的值设为0 */
-  sem_union.val = 0;
+  sem_union.val = 0;   /* 将信号量的值设为0 */
   /* 获取IPC关键字key */
   key = ftok (FTOK_PATH, FTOK_PROJID);
   if (key < 0) {
@@ -57,6 +58,14 @@ semaphore_init (void) {
   printf ("ftok() get key successfully!\n");
 
   /* 创建或获取信号量，信号量不存在则创建 */
+  /**
+   * @brief: 创建一个新的信号量集合，或者访问现有的集合。
+   * @param key: ftok生成键值
+   * @param nsems: 参数可以指定新的集合中应该创建的信号量的数目
+   * @param semflg: 打开信号的方式
+   *                IPC_CREAT: 如果内核中不存在这样的信号量集合，则把它创建出来。如果存在则获取该信号集合
+   *                IPC_EXCL: 当与IPC_CREAT一起使用时，如果信号量集合早已存在，则操作将失败。
+  */
   semid = semget (key, 1, IPC_CREAT | 0644);
   if (semid < 0) {
 		printf("semget() get semid  failure:%s\n",strerror(errno));
